@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image slider</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">Image slider</a></li>
+        <li><a href="aplikacija.html">O aplikaciji</a></li>
+    </ul>
+    <br>
+    <div class="container">
+        <div class="slike fade">
+            <img src="slike/slika1.jpg" style="width: 100%;">
+        </div>
+        <div class="slike fade">
+            <img src="slike/slika2.jpg" style="width: 100%;">
+        </div>
+        <div class="slike fade">
+            <img src="slike/slika3.jpg" style="width: 100%;">
+        </div>
+        <div class="slike fade">
+            <img src="slike/slika4.jpg" style="width: 100%;">
+        </div>
+        <div class="slike fade">
+            <img src="slike/slika5.jpg" style="width: 100%;">
+        </div>
+    </div>
+    <br>
+
+    <div style="text-align: center;">
+        <span class="kvadrat"></span>
+        <span class="kvadrat"></span>
+        <span class="kvadrat"></span>
+        <span class="kvadrat"></span>
+        <span class="kvadrat"></span>
+    </div>
+
+    <script>
+        var index = 0;
+        vrti();
+        function vrti(){
+            var i;
+            var slike = document.getElementsByClassName("slike");
+            var kvadrati = document.getElementsByClassName("kvadrat");
+            for(i=0; i<slike.length; i++){
+                slike[i].style.display = "none";
+            }
+            index++;
+            if(index>slike.length){
+                index = 1;
+            }
+            for(i=0; i<kvadrati.length; i++){
+                kvadrati[i].className = kvadrati[i].className.replace(" aktivni","");
+            }
+            slike[index-1].style.display = "block";
+            kvadrati[index-1].className +=" aktivni";
+            setTimeout(vrti, 3000);
+        }
+    </script>
+</body>
+</html>
